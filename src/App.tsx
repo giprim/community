@@ -2,14 +2,18 @@ import styled from "@emotion/styled";
 import React from "react";
 import "./App.css";
 import Banner from "./components/Banner";
+import Navbar from "./components/Navbar";
 import Programs from "./components/Programs";
 import whiteBg from "./images/whitebg.svg";
 function App() {
   return (
     <StyledFluidContainer>
-      <Banner />
+      <StyledContainer>
+        <Navbar />
+        <Banner />
+      </StyledContainer>
       <div className='whitebg'>
-        <StyledContainer>
+        <StyledContainer id='program'>
           <Programs />
         </StyledContainer>
       </div>
