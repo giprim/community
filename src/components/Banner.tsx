@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import desktopImg from "../images/bannerPearl.svg";
+import desktopImg from "../images/desktopBanner.png";
 import mobileImg from "../images/bannerMobile.png";
+import { StyledContainer } from "../App";
 const Banner: React.FC = () => {
   const [mobile, setmobile] = useState(false);
   useEffect(() => {
@@ -16,31 +17,35 @@ const Banner: React.FC = () => {
 
   return (
     <StyledBanner>
-      <div className='caption'>
-        <h2>Let's Learn together</h2>
-        <p>sign up today and be a part of the fast growing community.</p>
+      <StyledContainer>
+        <div className='caption'>
+          <h2>Let's Learn together</h2>
+          <p>sign up today and be a part of the fast growing community.</p>
 
-        <form>
-          <div className='inputbox'>
-            <label htmlFor='fullname'>Full name</label>
-            <input id='fullname' type='text' placeholder='John Doe Chukwu' />
-          </div>
-          <div className='inputbox'>
-            <label htmlFor='email'>Email address</label>
-            <input id='email' type='text' placeholder='example@email.com' />
-          </div>
-          <div className='inputbox'>
-            <input type='submit' value='SIGN UP' />
-          </div>
-        </form>
-      </div>
-      <div>
-        {mobile ? (
-          <img src={mobileImg} alt='imagemobile' />
-        ) : (
-          <img src={desktopImg} alt='imagedesktop' />
-        )}
-      </div>
+          <form>
+            <div className='inputbox'>
+              <label htmlFor='fullname'>Full name</label>
+              <input id='fullname' type='text' placeholder='John Doe Chukwu' />
+            </div>
+            <div className='inputbox'>
+              <label htmlFor='email'>Email address</label>
+              <input id='email' type='text' placeholder='example@email.com' />
+            </div>
+            <div className='inputbox'>
+              <input type='submit' value='SIGN UP' />
+            </div>
+          </form>
+        </div>
+      </StyledContainer>
+      <StyledContainer onPadding={true}>
+        <div>
+          {mobile ? (
+            <img src={mobileImg} alt='imagemobile' />
+          ) : (
+            <img src={desktopImg} alt='imagedesktop' />
+          )}
+        </div>
+      </StyledContainer>
     </StyledBanner>
   );
 };
@@ -69,7 +74,6 @@ const StyledBanner = styled("div")`
   }
 
   .caption {
-    padding: 15px;
     max-width: 400px;
   }
 
