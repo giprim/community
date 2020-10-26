@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import desktopImg from "../images/desktopBanner.png";
 import mobileImg from "../images/bannerMobile.png";
-import StyledInput from "../styledComponents/Input";
 
 const Banner: React.FC = () => {
   const [mobile, setmobile] = useState(false);

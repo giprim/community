@@ -113,7 +113,7 @@ const StyledRegister = styled("div")`
   padding: 1em;
   .caption {
     text-align: left;
-    padding: 1.5em .33em;
+    padding: 1.5em 0.33em;
     color: #fff;
     h2 {
       font-size: 2.5em;
@@ -122,7 +122,7 @@ const StyledRegister = styled("div")`
   }
   @media (min-width: 768px) {
     margin: 3em auto;
-    h2 {
+    .caption {
       text-align: center;
     }
   }
