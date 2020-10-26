@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
-import desktopImg from '../images/desktopBanner.png';
-import mobileImg from '../images/bannerMobile.png';
-import StyledInput from '../styledComponents/Input';
+import React, { useEffect, useState } from "react";
+import styled from "@emotion/styled";
+import desktopImg from "../images/desktopBanner.png";
+import mobileImg from "../images/bannerMobile.png";
+import StyledInput from "../styledComponents/Input";
 
 const Banner: React.FC = () => {
   const [mobile, setmobile] = useState(false);
@@ -14,7 +14,7 @@ const Banner: React.FC = () => {
     if (win < 768) setmobile(true);
     else setmobile(false);
   };
-  window.addEventListener('resize', windowWidth);
+  window.addEventListener("resize", windowWidth);
 
   return (
     <StyledBanner>
@@ -36,13 +36,13 @@ const Banner: React.FC = () => {
 
 export default Banner;
 
-const StyledBanner = styled('div')`
+const StyledBanner = styled("div")`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   color: white;
   flex-wrap: wrap-reverse;
-  padding-top: 2em;
+
   padding-bottom: 2em;
 
   h2 {
@@ -65,6 +65,8 @@ const StyledBanner = styled('div')`
   }
 
   @media (min-width: 768px) {
+    padding-top: 2em;
+
     h2 {
       font-size: 2.4em;
     }
