@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import InputComp from "../components/Input";
-import StyledInput from "../styledComponents/Input";
 import { StyledContainer } from "./Home";
 
 const registerModel = {
@@ -17,9 +17,31 @@ const registerModel = {
   otherNeccessaryInfo: "",
 };
 
+const Endpoint =
+  "https://rocky-scrubland-02917.herokuapp.com/leaner/registration";
+
 const Register: React.FC = () => {
   const [registerdetails, setRegisterDetails] = useState(registerModel);
-  console.log(registerdetails);
+  const [submit, setSubmit] = useState("");
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("clicked");
+    Axios.post(Endpoint, registerdetails)
+      .then((res) => setSubmit(res.request.status))
+      .then(() => Notify())
+      .catch((err) => console.error(err));
+  };
+
+  const Notify = () => {
+    if (submit === "200") {
+      setRegisterDetails(registerModel);
+      setTimeout(() => {
+        setSubmit("");
+      }, 2000);
+    }
+  };
+
   return (
     <StyledRegisterPage>
       <StyledContainer>
@@ -31,64 +53,77 @@ const Register: React.FC = () => {
               We are excited to have yon in the coummunity. <br />
               Please, register below.
             </p>
+            {submit === "200" && <h2 style={{ color: "green" }}>Successful</h2>}
           </div>
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <div className='formBox'>
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='name'
                 placeholder='Full name'
               />
               <InputComp
+                type='email'
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='email'
                 placeholder='Email address'
               />
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='state'
                 placeholder='State'
               />
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='city'
                 placeholder='City'
               />
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='educationLevel'
                 placeholder='Education level'
               />
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='availableLearningTime'
                 placeholder='Preferred time for learning?'
+                type='time'
               />
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='whyJoinUs'
                 placeholder='Tell us why you want to join?'
               />
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='stack'
                 placeholder='Stack'
               />
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='previousTeckKnowledge'
                 placeholder='What Technologies have you used?'
               />
               <InputComp
+                required={true}
                 state={registerdetails}
                 setState={setRegisterDetails}
                 label='otherNeccessaryInfo'

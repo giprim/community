@@ -3,11 +3,12 @@ import React from "react";
 
 interface IInputLabel {
   state: any;
+  required?: boolean;
   setState: Function;
   placeholder?: string;
   label: string;
   showLabel?: boolean;
-  type?: "password" | "text" | "date" | "number" | "email" | "tel" | "file";
+  type?: "password" | "text" | "date" | "number" | "email" | "tel" | "file" | "time";
 }
 
 const InputComp: React.FC<IInputLabel> = ({
@@ -16,6 +17,7 @@ const InputComp: React.FC<IInputLabel> = ({
   setState,
   placeholder,
   type,
+  required,
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({ ...state, [event.target.id]: event.target.value });
@@ -27,11 +29,14 @@ const InputComp: React.FC<IInputLabel> = ({
 
       <StyledInput
         id={label}
+        required={required && required}
         placeholder={placeholder}
         value={state[label]}
         onChange={handleChange}
         type={type || "text"}
+        
       />
+      
     </StyledInputBox>
   );
 };
@@ -68,6 +73,4 @@ const StyledInputBox = styled("div")`
     color: #fff;
     width: 100%;
   }
-
- 
 `;
